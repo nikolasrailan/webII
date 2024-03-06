@@ -18,4 +18,6 @@ Route::get('/', function () {
 });
 
 Route::resource('/eixo', 'App\Http\Controllers\EixoController');
-
+Route::resource('/nivel', 'App\Http\Controllers\NivelController');
+Route::resource('/curso', 'App\Http\Controllers\CursoController');
+Route::resource('/permission', 'App\Http\Controllers\PermissionController');
