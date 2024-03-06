@@ -14,6 +14,6 @@ class Eixo extends Model
     protected $fillable = ['nome'];
 
     public function curso(){
-        return $this->hasMany('App\Model\Curso');
+        return $this->hasMany('\App\Models\Curso');
     }
 }
