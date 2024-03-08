@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Eixo extends Model
+
+class Turma extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['nome'];
 
-    public function curso(){
-        return $this->hasMany('\App\Models\Curso');
+    public function curso() {
+        return $this->belongsTo('\App\Models\Curso');
     }
 }
