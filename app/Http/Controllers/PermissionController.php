@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\PermissionRepository;
+use App\Repositories\RoleRepository;
+use App\Repositories\ResourceRepository;
 use App\Models\Permission;
 
 class PermissionController extends Controller

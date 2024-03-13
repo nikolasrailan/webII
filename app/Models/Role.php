@@ -12,4 +12,8 @@ class Role extends Model {
     public function resource() {
         return $this->belongsToMany('\App\Models\Resource', 'permissions'); 
     }
+
+    public function user() {
+        return $this->hasMany('App\Models\User');
+    }
 }

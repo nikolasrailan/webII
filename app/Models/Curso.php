@@ -24,4 +24,8 @@ class Curso extends Model
     public function role() {
         return $this->belongsToMany('\App\Models\Role', 'permissions');
     }
+
+    public function user() {
+        return $this->hasMany('App\Models\User');
+    }
 }

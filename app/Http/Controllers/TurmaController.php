@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\TurmaRepository;
+use App\Repositories\CursoRepository;
 use App\Models\Turma;
 use Illuminate\Http\Request;
 
@@ -63,17 +64,7 @@ class TurmaController extends Controller
      */
     public function edit(string $id)
     {
-        $obj = $this->repository->findById($id);
-        $objCurso = (new CursoRepository())->findById($request->curso_id);
         
-        if(isset($obj) && isset($objCurso)) {
-            $obj->ano = $request->ano;
-            $obj->curso()->associate($objCurso);
-            $this->repository->save($obj);
-            return "Foi";
-        }
-        
-        return "Erro";
     }
 
     /**
@@ -81,7 +72,17 @@ class TurmaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $obj = $this->repository->findById($id);
+        $objCurso = (new CursoRepository())->findById($request->curso_id);
+        
+        if(isset($obj) && isset($objCurso)) {
+            $obj->ano = $request->ano;
+            $obj->curso()->associate($objCurso);
+            $this->repository->save($obj);
+            return "<h1>Update - OK!</h1>";
+        }
+        
+        return "<h1>Store - Not found Curso!</h1>";
     }
 
     /**

@@ -76,21 +76,21 @@ class UserController extends Controller {
      */
     public function update(Request $request, string $id)
     {
-        $obj = $this->repository->findById($id);
+         $obj = $this->repository->findById($id);
         $objCurso = (new CursoRepository())->findById($request->curso_id);
         $objRole = (new RoleRepository())->findById($request->role_id);
-
+        
         if(isset($obj) && isset($objCurso) && isset($objRole)) {
             $obj->name = mb_strtoupper($request->nome, 'UTF-8');
             $obj->email = mb_strtolower($request->email, 'UTF-8');
-            $obj->password = Hash::make($request->password);
+            $obj->password = Hash::make($request->password); 
             $obj->curso()->associate($objCurso);
             $obj->role()->associate($objRole);
             $this->repository->save($obj);
-            return "Foi";
+            return "<h1>Update - OK!</h1>";
         }
-
-        return "Erro";
+        
+        return "<h1>Store - Not found Curso or User!</h1>";
     }
 
     /**
@@ -99,9 +99,9 @@ class UserController extends Controller {
     public function destroy(string $id)
     {
         if($this->repository->delete($id))  {
-            return "<h1>Delete - OK!</h1>";
+            return "Foi";
         }
 
-        return "<h1>Delete - Not found User!</h1>";
+        return "Erro";
     }
 }
